@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.mellberg.myphonebook.controller.CreateSceneController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="327.0" style="-fx-border-color: #000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mellberg.myphonebook.controller.CreateSceneController">
+   <children>
+      <TextField fx:id="createFirstName" layoutX="89.0" layoutY="109.0" />
+      <TextField fx:id="createLastName" layoutX="89.0" layoutY="149.0" />
+      <TextField fx:id="createPhoneNr" layoutX="89.0" layoutY="188.0" />
+      <Label layoutX="101.0" layoutY="47.0" text="Create Contact">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="18.0" layoutY="113.0" text="First name:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="153.0" text="Last name:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="192.0" text="Phone Nr:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="166.0" layoutY="232.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="60.0" prefWidth="72.0" text="Go Back">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="89.0" layoutY="232.0" mnemonicParsing="false" onAction="#createContact" prefHeight="60.0" prefWidth="72.0" text="Create">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

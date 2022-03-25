@@ -19,6 +19,15 @@ public class Contact {
     @Column(name = "phone_nr", nullable = true)
     private Integer phoneNr;
 
+    public Contact() {
+    }
+
+    public Contact(String firstName, String lastName, Integer phoneNr) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNr = phoneNr;
+    }
+
     public int getContactId() {
         return contactId;
     }
