@@ -50,5 +50,5 @@ public class Contact {
     public void setPhoneNr(Integer phoneNr) {
         this.phoneNr = phoneNr;
     }
-    
+
 }

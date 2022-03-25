@@ -1,4 +1,4 @@
-package com.mellberg.myphonebook;
+package com.mellberg.myphonebook.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

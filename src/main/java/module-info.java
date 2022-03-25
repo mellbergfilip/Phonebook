@@ -6,4 +6,6 @@ module com.mellberg.myphonebook {
 
     opens com.mellberg.myphonebook to javafx.fxml;
     exports com.mellberg.myphonebook;
+    exports com.mellberg.myphonebook.controller;
+    opens com.mellberg.myphonebook.controller to javafx.fxml;
 }
