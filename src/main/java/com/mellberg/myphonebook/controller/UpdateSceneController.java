@@ -23,17 +23,23 @@ public class UpdateSceneController {
 
     @FXML
     private TextField updateLastName;
-
     @FXML
     private TextField updatePhoneNr;
-
     @FXML
     private TextField updateFirstName;
 
+    @FXML
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    //method that updates current contact
     public void updateCurrentContact(Contact contact) {
         currentContact = contact;
         updateTextFields(currentContact);
     }
+
+    // method that updates textfields with current contact
     @FXML
     public void updateTextFields(Contact contact) {
 
@@ -42,6 +48,8 @@ public class UpdateSceneController {
         updateLastName.setText(contact.getLastName());
         updatePhoneNr.setText(phoneNr);
     }
+
+    // Method connected to update button
     @FXML
     public void updateContact(ActionEvent event) throws IOException {
         currentContact.setFirstName(updateFirstName.getText());
@@ -59,11 +67,6 @@ public class UpdateSceneController {
 
     }
     //Switch scene method
-    @FXML
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     public void switchToMainScene(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));

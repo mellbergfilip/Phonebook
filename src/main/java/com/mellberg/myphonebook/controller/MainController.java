@@ -10,9 +10,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.hibernate.sql.Update;
 
@@ -22,9 +24,34 @@ public class MainController {
 
     private ContactDAO contactDAO = new ContactDAO();
 
+
+
+    @FXML
+    private StackPane stackPaneWarning;
+    @FXML
+    private Label warningLabel;
+
+    @FXML
+    private TableColumn<Contact, Integer> columnID;
+    @FXML
+    private TableColumn<Contact, String> columnFirstName;
+    @FXML
+    private TableColumn<Contact, String> columnLastName;
+    @FXML
+    private TableColumn<Contact, Integer> columnPhoneNr;
+    @FXML
+    private TableView<Contact> contactTableView;
+
+    @FXML
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     // initialize method
     @FXML
     public void initialize() {
+        stackPaneWarning.setVisible(false);
+
         columnID.setCellValueFactory(new PropertyValueFactory<Contact, Integer>("contactId"));
         columnFirstName.setCellValueFactory(new PropertyValueFactory<Contact, String>("firstName"));
         columnLastName.setCellValueFactory(new PropertyValueFactory<Contact, String>("lastName"));
@@ -33,40 +60,24 @@ public class MainController {
         updateContactTableView();
     }
 
-    //Delete method
-
+    //Connected to deleteButton
     public void deleteContact(ActionEvent event) {
-        Contact contact = contactTableView.getSelectionModel().getSelectedItem();
-        contactDAO.deleteContact(contact);
-        updateContactTableView();
+        if (contactTableView.getSelectionModel().getSelectedItem() == null) {
+            warningLabel.setText("Select a contact");
+            stackPaneWarning.setVisible(true);
+        } else {
+            Contact contact = contactTableView.getSelectionModel().getSelectedItem();
+            contactDAO.deleteContact(contact);
+            updateContactTableView();
+        }
     }
 
-    //Table view fields and methods
-    @FXML
-    private TableColumn<Contact, Integer> columnID;
-
-    @FXML
-    private TableColumn<Contact, String> columnFirstName;
-
-    @FXML
-    private TableColumn<Contact, String> columnLastName;
-
-    @FXML
-    private TableColumn<Contact, Integer> columnPhoneNr;
-
-    @FXML
-    private TableView<Contact> contactTableView;
-
+    // Updates tableview with contacts
     private void updateContactTableView() {
         contactTableView.setItems(FXCollections.observableArrayList(contactDAO.readContacts()));
     }
 
     // Switch scenes methods
-    @FXML
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     public void switchToCreateScene(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("createScene.fxml"));
@@ -79,7 +90,6 @@ public class MainController {
 
     @FXML
     public void switchToUpdateScene(ActionEvent event) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("updateScene.fxml"));
         root = fxmlLoader.load();
         UpdateSceneController updateSceneController = fxmlLoader.getController();
@@ -91,7 +101,17 @@ public class MainController {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+        } else {
+            warningLabel.setText("Select a contact");
+            stackPaneWarning.setVisible(true);
         }
+    }
+
+    // Method connected to warning pop-up OK button
+
+    @FXML
+    void okWarningSign(ActionEvent event) {
+        stackPaneWarning.setVisible(false);
     }
 
 }

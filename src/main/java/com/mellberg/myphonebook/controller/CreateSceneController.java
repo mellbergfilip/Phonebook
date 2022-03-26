@@ -16,15 +16,20 @@ import java.io.IOException;
 
 public class CreateSceneController {
 
-    // Create contact
+
     @FXML
     private TextField createFirstName;
-
     @FXML
     private TextField createLastName;
-
     @FXML
     private TextField createPhoneNr;
+
+    @FXML
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    // Create button
     public void createContact(ActionEvent event) throws IOException {
         ContactDAO contactDAO = new ContactDAO();
         String firstName = createFirstName.getText();
@@ -41,12 +46,8 @@ public class CreateSceneController {
         stage.show();
 
     }
-    // Switch scene method
-    @FXML
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
+    // Switch scene method
     @FXML
     private void switchToMainScene(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));

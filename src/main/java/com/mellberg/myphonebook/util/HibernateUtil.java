@@ -13,7 +13,6 @@ public class HibernateUtil {
         SessionFactory sessionFactory = null;
 
         try {
-
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");
             configuration.addAnnotatedClass(Contact.class);
