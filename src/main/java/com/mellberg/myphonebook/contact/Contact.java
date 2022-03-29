@@ -1,7 +1,6 @@
 package com.mellberg.myphonebook.contact;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 public class Contact {
@@ -9,13 +8,13 @@ public class Contact {
     @Id
     @Column(name = "contact_id", nullable = false)
     private int contactId;
-    @Basic
+
     @Column(name = "first_name", nullable = false, length = 20)
     private String firstName;
-    @Basic
+
     @Column(name = "last_name", nullable = true, length = 30)
     private String lastName;
-    @Basic
+
     @Column(name = "phone_nr", nullable = true)
     private Integer phoneNr;
 
